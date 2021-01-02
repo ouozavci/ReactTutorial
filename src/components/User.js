@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import UserConsumer from "../Context";
 export default class User extends Component {
   state = { isVisible: false };
 
@@ -9,30 +10,46 @@ export default class User extends Component {
     });
   };
 
+  onDeleteUser = (dispatch, e) => {
+    const { id } = this.props;
+    console.log(id);
+    dispatch({ type: "DELETE_USER", payload: id });
+  };
+
   render() {
     //Destructing
     const { name, department, salary } = this.props;
     const { isVisible } = this.state;
     return (
-      <div className="col-md-8 mb-4">
-        <div className="card">
-          <div className="card-header d-flex justify-content-between">
-            <div className="d-inline" onClick={this.onCLickEvent}>
-              {name}
-            </div>
-            <i className="fas fa-user-times"></i>
-          </div>
-          {isVisible ? (
-            <div className="card-body">
-              <div className="card-text">Departman: {department}</div>
-              <div className="card-text">
-                Maaş: {salary}
-                {salary === User.defaultProps.salary ? "" : " TL"}
+      <UserConsumer>
+        {(value) => {
+          const { dispatch } = value;
+          return (
+            <div className="col-md-8 mb-4">
+              <div className="card">
+                <div className="card-header d-flex justify-content-between">
+                  <div className="d-inline" onClick={this.onCLickEvent}>
+                    {name}
+                  </div>
+                  <i
+                    className="fas fa-user-times"
+                    onClick={this.onDeleteUser.bind(this, dispatch)}
+                  ></i>
+                </div>
+                {isVisible ? (
+                  <div className="card-body">
+                    <div className="card-text">Departman: {department}</div>
+                    <div className="card-text">
+                      Maaş: {salary}
+                      {salary === User.defaultProps.salary ? "" : " TL"}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
-          ) : null}
-        </div>
-      </div>
+          );
+        }}
+      </UserConsumer>
     );
   }
 }

@@ -14,6 +14,7 @@ export default class Users extends Component {
                 return (
                   <User
                     key={user.id}
+                    id={user.id}
                     name={user.name}
                     salary={user.salary}
                     department={user.department}
