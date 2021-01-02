@@ -64,7 +64,7 @@ export default class User extends Component {
 User.propTypes = {
   name: PropTypes.string.isRequired,
   department: PropTypes.string.isRequired,
-  salary: PropTypes.number.isRequired,
+  salary: PropTypes.string.isRequired,
 };
 User.defaultProps = {
   salary: "Bilgi yok",
