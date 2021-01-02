@@ -1,21 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 export default class User extends Component {
+  state = { isVisible: false };
+
+  onCLickEvent = (e) => {
+    this.setState({
+      isVisible: !this.state.isVisible,
+    });
+  };
+
   render() {
     //Destructing
     const { name, department, salary } = this.props;
-
+    const { isVisible } = this.state;
     return (
       <div className="col-md-8 mb-4">
         <div className="card">
           <div className="card-header d-flex justify-content-between">
-            <div className="d-inline">{name}</div>
-            <i class="fas fa-user-times"></i>
+            <div className="d-inline" onClick={this.onCLickEvent}>
+              {name}
+            </div>
+            <i className="fas fa-user-times"></i>
           </div>
-          <div className="card-body">
-            <div className="card-text">Departman: {department}</div>
-            <div className="card-text">Maaş: {salary}</div>
-          </div>
+          {isVisible ? (
+            <div className="card-body">
+              <div className="card-text">Departman: {department}</div>
+              <div className="card-text">Maaş: {salary}</div>
+            </div>
+          ) : null}
         </div>
       </div>
     );
