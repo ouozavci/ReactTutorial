@@ -19,14 +19,22 @@ const Animation = posed.div({
 export default class AddUser extends Component {
   state = {
     visible: false,
+    name: "",
+    department: "",
+    salary: "",
   };
   changeVisibility = (e) => {
     this.setState({
       visible: !this.state.visible,
     });
   };
+  changeInput = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   render() {
-    const { visible } = this.state;
+    const { visible, name, salary, department } = this.state;
     return (
       <div className="col-md-8 mb-4">
         <button
@@ -50,6 +58,8 @@ export default class AddUser extends Component {
                     id="name"
                     placeholder="Enter name"
                     className="form-control"
+                    value={name}
+                    onChange={this.changeInput}
                   ></input>
                 </div>
                 <div className="form-group">
@@ -60,6 +70,8 @@ export default class AddUser extends Component {
                     id="department"
                     placeholder="Enter department"
                     className="form-control"
+                    value={department}
+                    onChange={this.changeInput}
                   ></input>
                 </div>
                 <div className="form-group">
@@ -70,6 +82,8 @@ export default class AddUser extends Component {
                     id="salary"
                     placeholder="Enter salary"
                     className="form-control"
+                    value={salary}
+                    onChange={this.changeInput}
                   ></input>
                 </div>
                 <button className="btn btn-danger btn-block" type="submit">
