@@ -26,7 +26,14 @@ export default class User extends Component {
           const { dispatch } = value;
           return (
             <div className="col-md-8 mb-4">
-              <div className="card">
+              <div
+                className="card"
+                style={
+                  isVisible
+                    ? { backgroundColor: "#002233", color: "white" }
+                    : null
+                }
+              >
                 <div
                   className="card-header d-flex justify-content-between"
                   onClick={this.onCLickEvent}
