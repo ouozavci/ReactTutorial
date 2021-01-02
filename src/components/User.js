@@ -25,7 +25,10 @@ export default class User extends Component {
           {isVisible ? (
             <div className="card-body">
               <div className="card-text">Departman: {department}</div>
-              <div className="card-text">Maaş: {salary}</div>
+              <div className="card-text">
+                Maaş: {salary}
+                {salary === User.defaultProps.salary ? "" : " TL"}
+              </div>
             </div>
           ) : null}
         </div>
@@ -36,7 +39,7 @@ export default class User extends Component {
 User.propTypes = {
   name: PropTypes.string.isRequired,
   department: PropTypes.string.isRequired,
-  salary: PropTypes.string.isRequired,
+  salary: PropTypes.number.isRequired,
 };
 User.defaultProps = {
   salary: "Bilgi yok",
