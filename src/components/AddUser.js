@@ -33,7 +33,7 @@ export default class AddUser extends Component {
           onClick={this.changeVisibility}
           className="btn btn-dark btn-block mb-2"
         >
-          {visible ? "Hide Form" : "Show Form"}
+          {visible ? "Hide Form" : "Add New User"}
         </button>
         <Animation pose={visible ? "visible" : "hidden"}>
           <div className="card">

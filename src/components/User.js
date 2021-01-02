@@ -27,10 +27,11 @@ export default class User extends Component {
           return (
             <div className="col-md-8 mb-4">
               <div className="card">
-                <div className="card-header d-flex justify-content-between">
-                  <div className="d-inline" onClick={this.onCLickEvent}>
-                    {name}
-                  </div>
+                <div
+                  className="card-header d-flex justify-content-between"
+                  onClick={this.onCLickEvent}
+                >
+                  <div className="d-inline">{name}</div>
                   <i
                     className="fas fa-user-times"
                     onClick={this.onDeleteUser.bind(this, dispatch)}
